@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InAmigos Foundation</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #fefefe;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e67e22;
+            color: #e67e22;
+        }
+
+        .btn-outline:hover {
+            background: #e67e22;
+            color: #fff;
+        }
+
+        /* ===== HEADER / NAVBAR ===== */
+        header {
+            background: #fff;
+            padding: 18px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #1e2a3a;
+        }
+
+        .logo span {
+            color: #e67e22;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #1e2a3a;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e67e22;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 80px 0 100px;
+            background: linear-gradient(135deg, #fef9f0 0%, #fdf0e0 100%);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: #e67e22;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #5a6a7a;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            padding: 50px 0;
+            background: #fff;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 40px;
+            color: #e67e22;
+        }
+
+        .stat-item p {
+            color: #5a6a7a;
+            font-weight: 500;
+        }
+
+        /* ===== PROGRAMS ===== */
+        .programs {
+            padding: 80px 0;
+            background: #faf8f5;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #5a6a7a;
+            margin-bottom: 48px;
+            font-size: 18px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background: #fff;
+            padding: 30px 24px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: 0.3s;
+            border-bottom: 4px solid #e67e22;
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .program-card .icon {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .program-card h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .program-card p {
+            color: #5a6a7a;
+            font-size: 15px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .about-flex {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .about-text p {
+            color: #5a6a7a;
+            margin-bottom: 16px;
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .about-text ul li {
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-text ul li::before {
+            content: "✓";
+            color: #e67e22;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            background: #fdf0e0;
+            height: 300px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        /* ===== GET INVOLVED ===== */
+        .involved {
+            padding: 80px 0;
+            background: #1e2a3a;
+            color: #fff;
+            text-align: center;
+        }
+
+        .involved h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .involved p {
+            color: #b0c0d0;
+            max-width: 600px;
+            margin: 0 auto 32px;
+            font-size: 18px;
+        }
+
+        .involved .btn {
+            background: #e67e22;
+        }
+
+        .involved .btn:hover {
+            background: #f39c12;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #15202b;
+            color: #8a9aaa;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        footer .social a {
+            color: #8a9aaa;
+            font-size: 24px;
+            transition: 0.3s;
+        }
+
+        footer .social a:hover {
+            color: #e67e22;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 12px;
+                background: #fff;
+                padding: 20px;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .about-flex {
+                flex-direction: column;
+            }
+
+            .about-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container header-flex">
+            <div class="logo">In<span>Amigos</span></div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#involved">Get Involved</a></li>
+            </ul>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Uniting Minds for <span>Change</span></h1>
+            <p>Empowering communities through education, health, and environmental action. Join us in creating a better tomorrow.</p>
+            <div class="hero-buttons">
+                <a href="#involved" class="btn">Get Involved</a>
+                <a href="#programs" class="btn btn-outline">Our Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3>50K+</h3>
+                <p>Meals Distributed</p>
+            </div>
+            <div class="stat-item">
+                <h3>30K+</h3>
+                <p>Interns Trained</p>
+            </div>
+            <div class="stat-item">
+                <h3>6</h3>
+                <p>Core Programs</p>
+            </div>
+            <div class="stat-item">
+                <h3>2020</h3>
+                <p>Founded</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROGRAMS ===== -->
+    <section class="programs" id="programs">
+        <div class="container">
+            <h2 class="section-title">Our Programs</h2>
+            <p class="section-sub">Six pillars of change that drive our mission forward.</p>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="icon">📚</div>
+                    <h4>Project Seva</h4>
+                    <p>Education and skill development for underprivileged children.</p>
+                </div>
+                <div class="program-card">
+                    <div class="icon">👶</div>
+                    <h4>Bachpanshala</h4>
+                    <p>Early childhood care and learning programs.</p>
+                </div>
+                <div class="program-card">
+                    <div class="icon">❤️</div>
+                    <h4>Jeev</h4>
+                    <p>Health awareness and medical support initiatives.</p>
+                </div>
+                <div class="program-card">
+                    <div class="icon">🚀</div>
+                    <h4>Udaan</h4>
+                    <p>Youth empowerment and leadership training.</p>
+                </div>
+                <div class="program-card">
+                    <div class="icon">🌿</div>
+                    <h4>Prakriti</h4>
+                    <p>Environmental conservation and sustainability.</p>
+                </div>
+                <div class="program-card">
+                    <div class="icon">🤝</div>
+                    <h4>Vikas</h4>
+                    <p>Community development and livelihood support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section class="about" id="about">
+        <div class="container about-flex">
+            <div class="about-text">
+                <h2>About InAmigos</h2>
+                <p>Founded on <strong>September 23, 2020</strong>, InAmigos Foundation is a registered NGO committed to uniting minds for lasting social change.</p>
+                <ul>
+                    <li>80G &amp; 12A Certified</li>
+                    <li>CSR-1 Registered</li>
+                    <li>Transparent &amp; Impact-Driven</li>
+                    <li>Working across 6 core sectors</li>
+                </ul>
+                <p>We believe in empowering communities through education, health, environment, and skill development.</p>
+            </div>
+            <div class="about-image">
+                🌍
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GET INVOLVED ===== -->
+    <section class="involved" id="involved">
+        <div class="container">
+            <h2>Join the Movement</h2>
+            <p>Your support can change lives. Volunteer your time, share your skills, or make a donation.</p>
+            <a href="#" class="btn">Donate Now</a>
+            <br><br>
+            <a href="#" class="btn btn-outline" style="color:#fff; border-color:#fff;">Become a Volunteer</a>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <div class="social">
+                <a href="#">📘</a>
+                <a href="#">🐦</a>
+                <a href="#">📸</a>
+                <a href="#">💼</a>
+            </div>
+            <p>&copy; 2026 InAmigos Foundation. All rights reserved.</p>
+            <p style="margin-top:6px;">Uniting Minds for Change</p>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('open');
+        }
+
+        // Close menu on link click (for mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>
